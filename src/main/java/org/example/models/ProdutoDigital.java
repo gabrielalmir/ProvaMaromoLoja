@@ -29,7 +29,7 @@ public class ProdutoDigital extends Produto{
         System.out.println("Nome " + this.getNome());
         System.out.println("descição" + this.getDescricao());
         System.out.println("Preco "+ this.getPreco());
-        System.out.println("Quantidade " + this.getQuantidade());
+        System.out.println("Quantidade " + tis.getQuantidade());
         System.out.println("Formato" + this.getFormato());
         System.out.println("Tamanho "+ this.getTamImagem());
 
