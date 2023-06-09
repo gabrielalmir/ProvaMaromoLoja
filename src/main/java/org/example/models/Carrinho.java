@@ -10,12 +10,20 @@ public class Carrinho {
         produtoList = new ArrayList<Produto>();
     }
 
+    public Carrinho(List<Produto> produtoList) {
+        this.produtoList = produtoList;
+    }
+
     public void adicionarProduto(Produto produto) {
         produtoList.add(produto);
     }
 
     public void removerProduto(Produto produto) {
         produtoList.remove(produto);
+    }
+
+    public List<Produto> getProdutoList() {
+        return produtoList;
     }
 
     public double getValorTotal() {
