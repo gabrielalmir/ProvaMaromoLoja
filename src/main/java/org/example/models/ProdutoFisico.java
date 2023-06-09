@@ -20,6 +20,13 @@ public class ProdutoFisico extends Produto {
     public void setDimensoes(String dimensoes) {
         this.dimensoes = dimensoes;
     }
+    @Override
+    public String toString() {
+        return "ProdutoFisico{" +
+                "peso='" + peso + '\'' +
+                ", dimensoes='" + dimensoes + '\'' +
+                '}';
+    }
 }
 
 
