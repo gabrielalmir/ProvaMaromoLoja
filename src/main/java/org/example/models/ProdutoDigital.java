@@ -1,6 +1,6 @@
 package org.example.models;
 
-public class ProdutoDigital extends Produto{
+public class ProdutoDigital extends Produto {
 
     private String formato;
     private int tamImagem;
@@ -24,14 +24,11 @@ public class ProdutoDigital extends Produto{
     public void setTamImagem(int tamImagem) {
         this.tamImagem = tamImagem;
     }
-    public void lisProdutoDigital(){
-        System.out.println("codigo "+ this.getCodigo());
-        System.out.println("Nome " + this.getNome());
-        System.out.println("descição" + this.getDescricao());
-        System.out.println("Preco "+ this.getPreco());
-        System.out.println("Quantidade " + this.getQuantidade());
-        System.out.println("Formato" + this.getFormato());
-        System.out.println("Tamanho "+ this.getTamImagem());
 
+    @Override
+    public String toString() {
+        return super.toString() + "\n" +
+                "Formato" + this.getFormato() + "\n" +
+                "Tamanho " + this.getTamImagem() + "\n";
     }
 }
