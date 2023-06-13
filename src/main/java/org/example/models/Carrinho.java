@@ -1,5 +1,7 @@
 package org.example.models;
 
+import org.example.exceptions.ProdutoNaoEncontradoException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,25 +12,16 @@ public class Carrinho {
         produtoList = new ArrayList<Produto>();
     }
 
-    public Carrinho(List<Produto> produtoList) {
-        this.produtoList = produtoList;
-    }
-
     public void adicionarProduto(Produto produto) {
         produtoList.add(produto);
     }
 
-    public void removerProduto(Produto produto) {
-        produtoList.remove(produto);
+    public boolean removerProduto(Produto produto) throws ProdutoNaoEncontradoException {
+        if (produtoList.remove(produto)) return true;
+        else throw new ProdutoNaoEncontradoException();
     }
 
-    public List<Produto> getProdutoList() {
-        return produtoList;
-    }
-
-    public double getValorTotal() {
-        double valorTotal = 0;
-        for (Produto produto : produtoList) valorTotal += produto.getPreco();
-        return valorTotal;
+    public double calcularValorTotalCompra() {
+        return produtoList.stream().mapToDouble(Produto::getPreco).sum();
     }
 }

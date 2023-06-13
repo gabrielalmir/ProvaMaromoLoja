@@ -3,7 +3,7 @@ package org.example.models;
 public class ProdutoDigital extends Produto {
 
     private String formato;
-    private int tamImagem;
+    private String tamanhoArquivo;
 
     public ProdutoDigital(int codigo, String nome, String descricao, double preco, int quantidade) {
         super(codigo, nome, descricao, preco, quantidade);
@@ -17,18 +17,18 @@ public class ProdutoDigital extends Produto {
         this.formato = formato;
     }
 
-    public int getTamImagem() {
-        return tamImagem;
+    public String getTamanhoArquivo() {
+        return tamanhoArquivo;
     }
 
-    public void setTamImagem(int tamImagem) {
-        this.tamImagem = tamImagem;
+    public void setTamanhoArquivo(String tamanhoArquivo) {
+        this.tamanhoArquivo = tamanhoArquivo;
     }
 
     @Override
     public String toString() {
         return super.toString() + "\n" +
-                "Formato" + this.getFormato() + "\n" +
-                "Tamanho " + this.getTamImagem() + "\n";
+                "formato: " + formato + "\n" +
+                "tamanhoArquivo: " + tamanhoArquivo;
     }
 }
