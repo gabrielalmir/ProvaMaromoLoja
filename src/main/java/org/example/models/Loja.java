@@ -21,4 +21,8 @@ public class Loja {
         if (index != -1) System.out.println(produtoList.get(index));
         throw new ProdutoNaoEncontradoException();
     }
+
+    public void gerarRelatorio() {
+        produtoList.forEach(System.out::println);
+    }
 }
