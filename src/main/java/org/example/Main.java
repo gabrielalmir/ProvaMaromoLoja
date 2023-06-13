@@ -33,17 +33,20 @@ public class Main {
             opcao = Integer.parseInt(scanner.nextLine());
 
             switch (opcao) {
-                case 1:
+                case 1 -> {
                     var gerenciadorEstoque = new GerenciadorEstoque();
                     gerenciadorEstoque.run();
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     var carrinhoDeCompras = new CarrinhoDeCompras();
                     carrinhoDeCompras.run();
-                    break;
-                case 3:
-                    this.quit();
-                    break;
+                }
+                case 3 -> this.quit();
+                default -> {
+                    System.out.println("Opção inválida!");
+                    System.out.println("Pressione ENTER para continuar...");
+                    scanner.nextLine();
+                }
             }
         } while (opcao != 3);
     }
