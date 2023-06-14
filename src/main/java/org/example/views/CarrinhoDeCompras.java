@@ -6,7 +6,9 @@ public class CarrinhoDeCompras {
     private final Scanner scanner = new Scanner(System.in);
 
     public void run() {
-        System.out.println("Gerenciador de estoque");
+        System.out.println("====================================");
+        System.out.println("Carrinho de compras");
+        System.out.println("====================================");
         scanner.nextLine();
     }
 }
