@@ -9,16 +9,16 @@ public class Produto {
     private double preco;
     private int quantidade;
 
-    public Produto(int codigo) {
-        this.codigo = codigo;
-    }
-
     public Produto(int codigo, String nome, String descricao, double preco, int quantidade) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
         this.quantidade = quantidade;
+    }
+
+    public Produto(int codigo) {
+        this.codigo = codigo;
     }
 
     public int getCodigo() {
@@ -64,19 +64,20 @@ public class Produto {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Produto produto = (Produto) o;
+        if (!(o instanceof Produto produto)) return false;
+
         return codigo == produto.codigo;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo);
+        return codigo;
     }
 
     @Override
     public String toString() {
-        return "Nome: " + nome + "\n" +
+        return  "\nCódigo: " + codigo + "\n" +
+                "Nome: " + nome + "\n" +
                 "Descrição: " + descricao + "\n" +
                 "Preço: " + preco + "\n" +
                 "Quantidade: " + quantidade + "\n";

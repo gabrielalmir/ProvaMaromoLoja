@@ -28,7 +28,7 @@ public class ProdutoFisico extends Produto {
 
     @Override
     public String toString() {
-        return super.toString() + "\n" +
+        return super.toString() +
                 "Peso: " + this.getPeso() + "\n" +
                 "Dimensões: " + this.getDimensoes() + "\n";
     }

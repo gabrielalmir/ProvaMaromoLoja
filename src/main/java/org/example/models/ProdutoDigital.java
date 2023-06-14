@@ -5,8 +5,10 @@ public class ProdutoDigital extends Produto {
     private String formato;
     private String tamanhoArquivo;
 
-    public ProdutoDigital(int codigo, String nome, String descricao, double preco, int quantidade) {
+    public ProdutoDigital(int codigo, String nome, String descricao, double preco, int quantidade, String formato, String tamanhoArquivo) {
         super(codigo, nome, descricao, preco, quantidade);
+        this.formato = formato;
+        this.tamanhoArquivo = tamanhoArquivo;
     }
 
     public String getFormato() {
@@ -25,9 +27,11 @@ public class ProdutoDigital extends Produto {
         this.tamanhoArquivo = tamanhoArquivo;
     }
 
+
+
     @Override
     public String toString() {
-        return super.toString() + "\n" +
+        return super.toString() +
                 "formato: " + formato + "\n" +
                 "tamanhoArquivo: " + tamanhoArquivo;
     }
