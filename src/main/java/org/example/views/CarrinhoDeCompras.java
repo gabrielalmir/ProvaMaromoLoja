@@ -52,7 +52,7 @@ public class CarrinhoDeCompras {
 
         loja.gerarRelatorio();
 
-        System.out.print("Digite o nome do produto que deseja adicionar (ou 'cancelar' para voltar): ");
+        System.out.print("Buscar produto (ou 'cancelar' para voltar): ");
         var nome = scanner.nextLine();
 
         if (nome.equalsIgnoreCase("cancelar")) {
@@ -67,6 +67,7 @@ public class CarrinhoDeCompras {
             return;
         }
 
+        System.out.println("\nProdutos encontrados:");
         for (int i = 0; i < produtosEncontrados.size(); i++) {
             System.out.println("(" + (i + 1) + "). " + produtosEncontrados.get(i));
         }

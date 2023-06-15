@@ -55,8 +55,7 @@ public class Main {
     }
 
     private void quit() {
-        System.out.println("Obrigado por utilizar o sistema!");
-        System.out.println("Tudo culpa do Maromo! 😊");
+        BaseView.titleScreen("Obrigado por utilizar o sistema! Tudo culpa do Maromo! 😊");
         System.exit(0);
     }
 }

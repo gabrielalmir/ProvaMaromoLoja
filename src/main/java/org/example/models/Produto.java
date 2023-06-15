@@ -1,5 +1,7 @@
 package org.example.models;
 
+import java.util.Scanner;
+
 public class Produto {
     private int codigo;
     private String nome;
@@ -76,5 +78,21 @@ public class Produto {
     public String toString() {
         return String.format("%-6s | %-20s | %-40s | %-5s | %-10s",
                 codigo, nome, descricao, preco, quantidade);
+    }
+
+    public void editar(Scanner scanner) {
+        System.out.println("Editar produto");
+
+        System.out.println("Digite o novo nome do produto: ");
+        this.setNome(scanner.nextLine());
+
+        System.out.println("Digite a nova descrição do produto: ");
+        this.setDescricao(scanner.nextLine());
+
+        System.out.println("Digite o novo preço do produto: ");
+        this.setPreco(Double.parseDouble(scanner.nextLine()));
+
+        System.out.println("Digite a nova quantidade do produto: ");
+        this.setQuantidade(Integer.parseInt(scanner.nextLine()));
     }
 }

@@ -23,7 +23,8 @@ public class GerenciadorEstoque {
             System.out.println("2. Remover produto");
             System.out.println("3. Listar produtos");
             System.out.println("4. Exibir produto");
-            System.out.println("5. Voltar ao menu principal");
+            System.out.println("5. Editar produto");
+            System.out.println("6. Voltar ao menu principal");
             System.out.print("Digite a opção desejada: ");
             opcao = scanner.nextLine();
 
@@ -32,7 +33,8 @@ public class GerenciadorEstoque {
                 case "2" -> this.removerProduto();
                 case "3" -> this.listarProdutos();
                 case "4" -> this.exibirProduto();
-                case "5" -> {
+                case "5" -> this.editarProduto();
+                case "6" -> {
                     System.out.println("Voltando ao menu principal...");
                     return;
                 }
@@ -41,6 +43,19 @@ public class GerenciadorEstoque {
 
             BaseView.pressEnterToContinue(scanner);
         } while (true);
+    }
+
+    private void editarProduto() {
+        BaseView.titleScreen("Editar produto");
+
+        loja.gerarRelatorio();
+
+        System.out.print("Digite o Código do produto que deseja editar: ");
+        var codigo = Integer.parseInt(scanner.nextLine());
+
+        loja.editarProduto(scanner, codigo);
+
+        System.out.println("Produto editado com sucesso!");
     }
 
     private void listarProdutos() {

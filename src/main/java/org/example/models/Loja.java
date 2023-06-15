@@ -4,6 +4,7 @@ import org.example.exceptions.ProdutoNaoEncontradoException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Loja {
     private final List<Produto> produtoList;
@@ -76,5 +77,14 @@ public class Loja {
 
     public List<Produto> getProdutoList() {
         return produtoList;
+    }
+
+    public void editarProduto(Scanner scanner, int codigo) {
+        try {
+            var produto = buscarProduto(codigo);
+            if (produto != null) produto.editar(scanner);
+        } catch (ProdutoNaoEncontradoException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

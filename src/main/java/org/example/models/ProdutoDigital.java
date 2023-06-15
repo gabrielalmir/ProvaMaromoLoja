@@ -1,5 +1,7 @@
 package org.example.models;
 
+import java.util.Scanner;
+
 public class ProdutoDigital extends Produto {
 
     private String formato;
@@ -29,7 +31,16 @@ public class ProdutoDigital extends Produto {
 
     @Override
     public String toString() {
-        return String.format("%s | | %-7s | %-7s",
+        return String.format("%s | %-7s | %-7s",
                 super.toString(), this.getFormato(), this.getTamanhoArquivo());
+    }
+
+    @Override
+    public void editar(Scanner scanner) {
+        super.editar(scanner);
+        System.out.println("Digite o formato do arquivo: ");
+        this.setFormato(scanner.nextLine());
+        System.out.println("Digite o tamanho do arquivo: ");
+        this.setTamanhoArquivo(scanner.nextLine());
     }
 }
