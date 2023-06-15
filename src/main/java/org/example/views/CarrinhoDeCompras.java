@@ -5,6 +5,9 @@ import org.example.models.Carrinho;
 import org.example.models.Loja;
 import org.example.models.Produto;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class CarrinhoDeCompras {
@@ -85,7 +88,24 @@ public class CarrinhoDeCompras {
 
             if (selecionado >= 1 && selecionado <= produtosEncontrados.size()) {
                 Produto produto = produtosEncontrados.get(selecionado - 1);
-                carrinho.adicionarProduto(produto);
+
+                System.out.print("Digite a quantidade desejada (ou 'cancelar' para voltar): ");
+                opcao = scanner.nextLine();
+
+                if (opcao.equalsIgnoreCase("cancelar")) {
+                    System.out.println("Operação cancelada.");
+                    return;
+                }
+
+                var quantidade = Integer.parseInt(opcao);
+
+                if (quantidade < 1 || quantidade > produto.getQuantidade()) {
+                    System.out.println("Quantidade inválida!");
+                    return;
+                }
+
+                carrinho.adicionarProduto(produto, quantidade);
+
                 System.out.println("Produto adicionado ao carrinho!");
             } else {
                 System.out.println("Opção inválida!");
@@ -109,11 +129,9 @@ public class CarrinhoDeCompras {
         }
 
         try {
-            int codigo = Integer.parseInt(opcao);
-
+            var codigo = Integer.parseInt(opcao);
             carrinho.removerProduto(new Produto(codigo));
-
-            throw new ProdutoNaoEncontradoException();
+            System.out.println("Produto removido do carrinho!");
         } catch (NumberFormatException e) {
             System.out.println("Código inválido!");
         } catch (ProdutoNaoEncontradoException e) {
@@ -124,19 +142,38 @@ public class CarrinhoDeCompras {
     private void finalizarCompra() {
         BaseView.titleScreen("Finalizar compra");
 
-        if (carrinho.getProdutoList().isEmpty()) {
+        if (carrinho.getCarrinho().isEmpty()) {
             System.out.println("O carrinho está vazio! Nenhuma compra foi realizada.");
         } else {
+            for (var produto : carrinho.getCarrinho()) {
+                loja.retirarEstoque(produto);
+            }
+
             double valorTotal = carrinho.calcularValorTotalCompra();
             System.out.printf("Valor total da compra: R$ %.2f%n", valorTotal);
             System.out.println("Compra finalizada com sucesso! 🥳");
 
-            carrinho.getProdutoList().clear();
+            carrinho.getCarrinho().clear();
         }
     }
 
     public void exibirCarrinho() {
         BaseView.titleScreen("Carrinho de compras");
-        loja.exibirProdutos(carrinho.getProdutoList());
+
+        List<Produto> produtos = new ArrayList<>();
+
+        for (Map<Produto, Integer> mapa : carrinho.getCarrinho()) {
+            produtos.addAll(mapa.keySet());
+        }
+
+        System.out.println("-".repeat(70));
+        System.out.printf("%-10s | %-20s | %-10s | %-10s\n", "Código", "Nome", "Preço", "Quantidade");
+        System.out.println("-".repeat(70));
+
+        produtos.stream().map(produto -> String.format("%-10s | %-20s | %-10s | %-10s\n",
+                produto.getCodigo(),
+                produto.getNome(),
+                produto.getPreco(),
+                carrinho.getQuantidadeProduto(produto))).forEach(System.out::println);
     }
 }

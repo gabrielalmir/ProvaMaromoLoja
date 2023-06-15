@@ -63,10 +63,7 @@ public class Produto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Produto produto)) return false;
-
-        return codigo == produto.codigo;
+        return o instanceof Produto && ((Produto) o).codigo == codigo;
     }
 
     @Override

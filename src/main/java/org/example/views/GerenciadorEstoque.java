@@ -66,8 +66,6 @@ public class GerenciadorEstoque {
     private void exibirProduto() {
         BaseView.titleScreen("Exibir produto");
 
-        loja.gerarRelatorio();
-
         System.out.print("Digite o ID do produto que deseja exibir: ");
         var id = Integer.parseInt(scanner.nextLine());
 

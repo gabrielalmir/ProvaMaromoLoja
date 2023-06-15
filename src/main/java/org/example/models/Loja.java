@@ -4,6 +4,7 @@ import org.example.exceptions.ProdutoNaoEncontradoException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Loja {
@@ -83,6 +84,23 @@ public class Loja {
         try {
             var produto = buscarProduto(codigo);
             if (produto != null) produto.editar(scanner);
+        } catch (ProdutoNaoEncontradoException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void retirarEstoque(Map<Produto, Integer> produtos) {
+        try {
+            for (var produto : produtos.keySet()) {
+                var produtoEncontrado = buscarProduto(produto.getCodigo());
+                if (produtoEncontrado != null) {
+                    if (produtoEncontrado.getQuantidade() >= produtos.get(produto)) {
+                        produtoEncontrado.setQuantidade(produtoEncontrado.getQuantidade() - produtos.get(produto));
+                    } else {
+                        System.out.printf("Não foi possível retirar %d unidades do produto %s, pois não há estoque suficiente!\n", produtos.get(produto), produtoEncontrado.getNome());
+                    }
+                }
+            }
         } catch (ProdutoNaoEncontradoException e) {
             System.out.println(e.getMessage());
         }
