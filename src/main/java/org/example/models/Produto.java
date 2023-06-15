@@ -1,7 +1,5 @@
 package org.example.models;
 
-import java.util.Objects;
-
 public class Produto {
     private int codigo;
     private String nome;
@@ -76,10 +74,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return  "\nCódigo: " + codigo + "\n" +
-                "Nome: " + nome + "\n" +
-                "Descrição: " + descricao + "\n" +
-                "Preço: " + preco + "\n" +
-                "Quantidade: " + quantidade + "\n";
+        return String.format("%-6s | %-20s | %-40s | %-5s | %-10s",
+                codigo, nome, descricao, preco, quantidade);
     }
 }

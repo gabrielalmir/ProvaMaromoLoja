@@ -18,9 +18,7 @@ public class GerenciadorEstoque {
         var opcao = "0";
 
         do {
-            System.out.println("====================================");
-            System.out.println("\tGerenciador de estoque\t");
-            System.out.println("====================================");
+            BaseView.titleScreen("Gerenciador de estoque");
             System.out.println("1. Cadastrar produto");
             System.out.println("2. Remover produto");
             System.out.println("3. Listar produtos");
@@ -34,23 +32,24 @@ public class GerenciadorEstoque {
                 case "2" -> this.removerProduto();
                 case "3" -> this.listarProdutos();
                 case "4" -> this.exibirProduto();
-                case "5" -> System.out.println("Voltando ao menu principal...");
+                case "5" -> {
+                    System.out.println("Voltando ao menu principal...");
+                    return;
+                }
                 default -> System.out.println("Opção inválida!");
             }
-        } while (!opcao.equals("5"));
+
+            BaseView.pressEnterToContinue(scanner);
+        } while (true);
     }
 
     private void listarProdutos() {
-        System.out.println("====================================");
-        System.out.println("\tListagem de produtos\t");
-        System.out.println("====================================");
+        BaseView.titleScreen("Listagem de produtos");
         loja.gerarRelatorio();
     }
 
     private void exibirProduto() {
-        System.out.println("====================================");
-        System.out.println("\tExibição de produtos\t");
-        System.out.println("====================================");
+        BaseView.titleScreen("Exibir produto");
 
         loja.gerarRelatorio();
 
@@ -61,9 +60,7 @@ public class GerenciadorEstoque {
     }
 
     private void removerProduto() {
-        System.out.println("====================================");
-        System.out.println("\tRemoção de produtos\t");
-        System.out.println("====================================");
+        BaseView.titleScreen("Remover produto");
 
         loja.gerarRelatorio();
 
@@ -74,9 +71,7 @@ public class GerenciadorEstoque {
     }
 
     private void cadastrarProduto() {
-        System.out.println("====================================");
-        System.out.println("\tCadastro de produtos\t");
-        System.out.println("====================================");
+        BaseView.titleScreen("Cadastro de produto");
 
         System.out.print("Digite o nome do produto: ");
         var nome = scanner.nextLine();

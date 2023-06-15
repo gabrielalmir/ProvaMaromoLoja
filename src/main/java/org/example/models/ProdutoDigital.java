@@ -27,12 +27,9 @@ public class ProdutoDigital extends Produto {
         this.tamanhoArquivo = tamanhoArquivo;
     }
 
-
-
     @Override
     public String toString() {
-        return super.toString() +
-                "formato: " + formato + "\n" +
-                "tamanhoArquivo: " + tamanhoArquivo;
+        return String.format("%s | | %-7s | %-7s",
+                super.toString(), this.getFormato(), this.getTamanhoArquivo());
     }
 }
