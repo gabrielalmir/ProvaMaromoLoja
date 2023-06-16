@@ -23,6 +23,8 @@ public class Main {
         produtos.add(new ProdutoFisico(1, "Mouse", "Mouse sem fio", 50.0, 10, "0.5kg", "10x10x10cm"));
         produtos.add(new ProdutoFisico(2, "Teclado", "Teclado sem fio", 100.0, 10, "1kg", "20x20x20cm"));
         produtos.add(new ProdutoDigital(3, "Curso Java", "Curso de Java", 100.0, 10, "mp4", "10GB"));
+        produtos.add(new ProdutoFisico(4, "Camisa da Seleção 2002", "Ronaldo - n°9", 1000.0, 10, "0.5kg", "10x10x10cm"));
+        produtos.add(new ProdutoDigital(5, "Técnica Pomodoro", "Técnica Pomodoro", 0.0, 10, "pdf", "1MB"));
 
         Loja loja = new Loja(produtos);
         Carrinho carrinho = new Carrinho();
