@@ -53,9 +53,12 @@ public class GerenciadorEstoque {
         System.out.print("Digite o Código do produto que deseja editar: ");
         var codigo = Integer.parseInt(scanner.nextLine());
 
-        loja.editarProduto(scanner, codigo);
-
-        System.out.println("Produto editado com sucesso!");
+        try {
+            loja.editarProduto(scanner, codigo);
+            System.out.println("Produto editado com sucesso!");
+        } catch (Exception e) {
+            System.out.println("Erro ao editar produto: " + e.getMessage());
+        }
     }
 
     private void listarProdutos() {
@@ -86,17 +89,28 @@ public class GerenciadorEstoque {
     private void cadastrarProduto() {
         BaseView.titleScreen("Cadastro de produto");
 
-        System.out.print("Digite o nome do produto: ");
-        var nome = scanner.nextLine();
+        var nome = "";
+        var descricao = "";
+        var preco = 0.0;
+        var quantidade = 0;
 
-        System.out.print("Descrição do produto: ");
-        var descricao = scanner.nextLine();
+        try {
+            System.out.print("Digite o nome do produto: ");
+            nome = scanner.nextLine();
 
-        System.out.print("Digite o preço do produto: ");
-        var preco = Double.parseDouble(scanner.nextLine());
+            System.out.print("Descrição do produto: ");
+            descricao = scanner.nextLine();
 
-        System.out.print("Digite a quantidade do produto: ");
-        var quantidade = Integer.parseInt(scanner.nextLine());
+            System.out.print("Digite o preço do produto: ");
+            preco = Double.parseDouble(scanner.nextLine());
+
+            System.out.print("Digite a quantidade do produto: ");
+            quantidade = Integer.parseInt(scanner.nextLine());
+        } catch (Exception e) {
+            System.out.println("Erro ao cadastrar produto!");
+            System.out.println("Verifique se os dados foram digitados corretamente.");
+            return;
+        }
 
         var opcao = 0;
         do {
